@@ -12,7 +12,7 @@ var request = require('request');
 const cheerio = require("cheerio");
 
 // Require all models
-//const db = require("./models");
+var db = require("./models");
 
 const PORT = 3000;
 
