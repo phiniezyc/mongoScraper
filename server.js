@@ -47,6 +47,9 @@ mongoose.connect("mongodb://localhost/mongoScraper", {
     useMongoClient: true
 });
 
+require("./controllers/apiRoutes.js")(app);
+require("./controllers/htmlRoutes.js")(app);
+
 
 
 // Start the server
