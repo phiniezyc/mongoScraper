@@ -1,7 +1,7 @@
 module.exports = (app) => {
     app.get("/", (req, res) => {
 
-        res.send(`HTML ROUTE TEST`);
+        res.send(`ROUTE TEST`);
     });
 
 

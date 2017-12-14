@@ -1,5 +1,11 @@
 var request = require('request');
 const cheerio = require("cheerio");
+const mongoose = require("mongoose");
+
+// Require all models
+var db = require("../models");
+
+
 
 module.exports = (app) => {
     app.get("/api/TEST", (req, res) => {
@@ -19,27 +25,30 @@ module.exports = (app) => {
                 var title = $(element).children("a").text();
                 var link = $(element).children("a").attr("href");
 
-                // If this found element had both a title and a link
+                //If this found element had both a title and a link
                 if (title && link) {
-                    //     // Insert the data in the scrapedData db
-                    //     db.scrapedData.insert({
-                    //             title: title,
-                    //             link: link
-                    //         },
-                    //         function (err, inserted) {
-                    //             if (err) {
-                    //                 // Log the error if one is encountered during the query
-                    //                 console.log(err);
-                    //             } else {
-                    //                 // Otherwise, log the inserted data
-                    //                 console.log(inserted);
-                    //             }
-                    //         });
+                    // Insert the data in the scrapedData db
+                    db.Article.insert({
+                            title: title,
+                            link: link
+                        },
+                        function (err, inserted) {
+                            if (err) {
+                                // Log the error if one is encountered during the query
+                                console.log(err);
+                            } else {
+                                // Otherwise, log the inserted data
+                                console.log(inserted);
+                            }
+                        });
 
                     console.log(`TITLES: ${title}`);
                     console.log(`LINKS: ${link}`);
-                }
 
+
+                    }
+
+                res.end(); //added this to end the response cycling.
 
             });
         });

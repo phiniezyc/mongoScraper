@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const exphbs = require ("express-handlebars");
+const exphbs = require("express-handlebars");
 
 
 // Our scraping tools
@@ -14,7 +14,7 @@ const cheerio = require("cheerio");
 // Require all models
 var db = require("./models");
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Initialize Express
 const app = express();
@@ -38,17 +38,15 @@ app.engine("handlebars", exphbs({
 }));
 app.set("view engine", "handlebars");
 
-
-
-// Set mongoose to leverage built in JavaScript ES6 Promises
-// Connect to the Mongo DB
-mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/mongoScraper", {
-    useMongoClient: true
-});
-
 require("./controllers/apiRoutes.js")(app);
 require("./controllers/htmlRoutes.js")(app);
+
+
+
+
+
+
+
 
 
 
