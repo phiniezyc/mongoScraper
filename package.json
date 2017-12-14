@@ -1,0 +1,31 @@
+{
+  "name": "mongoScraper",
+  "version": "1.0.0",
+  "description": "Scrape website and add a note to the scraped material.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phiniezyc/mongoScraper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phiniezyc/mongoScraper/issues"
+  },
+  "homepage": "https://github.com/phiniezyc/mongoScraper#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.13.7",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.12.7",
+    "request": "^2.83.0"
+  }
+}
