@@ -21,32 +21,29 @@ module.exports = (app) => {
             var $ = cheerio.load(html);
             // For each element with a "title" class
             $(".title").each(function (i, element) {
-                // Save the text and href of each link enclosed in the current element
-                var title = $(element).children("a").text();
-                var link = $(element).children("a").attr("href");
+                // Save an empty result object
+                var result = {};
+
+                // Add the text and href of every link, and save them as properties of the result object
+                result.title = $(this).children("a").text();
+                result.link = $(this).children("a").attr("href");
+
 
                 //If this found element had both a title and a link
-                if (title && link) {
-                    // Insert the data in the scrapedData db
-                    db.Article.insert({
-                            title: title,
-                            link: link
-                        },
-                        function (err, inserted) {
-                            if (err) {
-                                // Log the error if one is encountered during the query
-                                console.log(err);
-                            } else {
-                                // Otherwise, log the inserted data
-                                console.log(inserted);
-                            }
+                if (result.title && result.link) {
+                    // Create a new Article using the `result` object built from scraping
+                    db.Article.create(result)
+                        .then(function (dbArticle) {
+                            // If we were able to successfully scrape and save an Article, send a message to the client
+                            res.send("Scrape Complete");
+                        }).catch(function (err) {
+                            // If an error occurred, send it to the client
+                            res.json(err);
                         });
 
-                    console.log(`TITLES: ${title}`);
-                    console.log(`LINKS: ${link}`);
-
-
-                    }
+                    console.log(`TITLES: ${result.title}`);
+                    console.log(`LINKS: ${result.link}`);
+                }
 
                 res.end(); //added this to end the response cycling.
 
