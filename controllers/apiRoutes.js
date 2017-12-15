@@ -75,11 +75,11 @@ module.exports = (app) => {
             })
             // ..and populate all of the notes associated with it
             //.populate("note")
-            .then(function (dbArticle) {
+            .then( (dbArticle) =>{
                 // If we were able to successfully find an Article with the given id, send it back to the client
                 res.json(dbArticle);
             })
-            .catch(function (err) {
+            .catch((err) =>{
                 // If an error occurred, send it to the client
                 res.json(err);
             });
@@ -88,7 +88,7 @@ module.exports = (app) => {
 
 
     // Route for saving/updating an Article's associated Note
-    app.post("/api/articles/:id", function (req, res) {
+    app.post("/api/articles/:id", (req, res) =>{
         // Create a new note and pass the req.body to the entry
         db.Note
             .create(req.body)
