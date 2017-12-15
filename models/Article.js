@@ -26,7 +26,7 @@ const ArticleSchema = new Schema({
 });
 
 // This creates our model from the above schema, using mongoose's model method
-const Article = mongoose.model("Article", ArticleSchema);
+const Article = mongoose.model("Article", ArticleSchema, "Articles");  //3rd argument ("Articles") sets the name of the Collection otherwise mongoose will do it's own thing: pluralize and lowercase...
 
 // Export the Article model
 module.exports = Article;

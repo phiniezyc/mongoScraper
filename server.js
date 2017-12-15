@@ -6,7 +6,6 @@ const exphbs = require("express-handlebars");
 
 
 // Our scraping tools
-
 // It works on the client and on the server
 var request = require('request');
 const cheerio = require("cheerio");
@@ -21,8 +20,6 @@ const app = express();
 
 // Use express.static to serve the public folder as a static directory
 app.use(express.static("public"));
-
-
 
 // Use morgan logger for logging requests
 app.use(logger("dev"));
@@ -42,12 +39,11 @@ require("./controllers/apiRoutes.js")(app);
 require("./controllers/htmlRoutes.js")(app);
 
 
-
-
-
-
-
-
+// Connect to the Mongo DB
+mongoose.Promise = Promise;
+mongoose.connect("mongodb://localhost/mongoScraper", {
+    useMongoClient: true
+});
 
 
 // Start the server
