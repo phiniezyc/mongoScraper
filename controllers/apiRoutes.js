@@ -14,7 +14,7 @@ module.exports = (app) => {
     });
 
     // Scrape data from one site and place it into the mongodb db
-    app.get("/api/scrape", (req, res) => {
+    app.post("/api/scrape", (req, res) => {
         // Make a request for the news section of ycombinator
         request("https://news.ycombinator.com/", (error, response, html) => {
             // Load the html body from request into cheerio
