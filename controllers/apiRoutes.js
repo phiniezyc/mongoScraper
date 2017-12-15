@@ -35,19 +35,20 @@ module.exports = (app) => {
                     db.Article.create(result)
                         .then(function (dbArticle) {
                             // If we were able to successfully scrape and save an Article, send a message to the client
-                            res.send("Scrape Complete");
+                            //res.send("Scrape Complete");
                         }).catch(function (err) {
                             // If an error occurred, send it to the client
-                            res.json(err);
+                            // res.json(err);
                         });
 
                     console.log(`TITLES: ${result.title}`);
                     console.log(`LINKS: ${result.link}`);
                 }
 
-                res.end(); //added this to end the response cycling.
+                // res.end(); //added this to end the response cycling.
 
             });
+            res.send("Scrape Complete");
         });
 
 
