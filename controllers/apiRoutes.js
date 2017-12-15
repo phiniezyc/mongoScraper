@@ -14,7 +14,7 @@ module.exports = (app) => {
     });
 
     // Scrape data from one site and place it into the mongodb db
-    app.get("/scrape", (req, res) => {
+    app.get("/api/scrape", (req, res) => {
         // Make a request for the news section of ycombinator
         request("https://news.ycombinator.com/", (error, response, html) => {
             // Load the html body from request into cheerio
@@ -53,7 +53,7 @@ module.exports = (app) => {
 
     });
 
-    app.get("/articles", (req, res) => {
+    app.get("/api/articles", (req, res) => {
         // Grab every document in the Articles collection
         db.Article.find({})
             .then((dbArticle) =>{
@@ -64,6 +64,6 @@ module.exports = (app) => {
                 // If an error occurred, send it to the client
                 res.json(err);
             });
-        console.log("we have the articles");
+        console.log("we have the articles from database");
     });
 };
