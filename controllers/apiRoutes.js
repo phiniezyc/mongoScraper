@@ -33,10 +33,10 @@ module.exports = (app) => {
                 if (result.title && result.link) {
                     // Create a new Article using the `result` object built from scraping
                     db.Article.create(result)
-                        .then(function (dbArticle) {
+                        .then((dbArticle) =>{
                             // If we were able to successfully scrape and save an Article, send a message to the client
 
-                        }).catch(function (err) {
+                        }).catch((err) =>{
                             // If an error occurred, send it to the client
                             res.json(err);
                         });
@@ -92,7 +92,7 @@ module.exports = (app) => {
         // Create a new note and pass the req.body to the entry
         db.Note
             .create(req.body)
-            .then(function (dbNote) {
+            .then((dbNote) => {
                 // If a Note was created successfully, find one Article with an `_id` equal to `req.params.id`. Update the Article to be associated with the new Note
                 // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
                 // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
