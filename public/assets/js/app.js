@@ -1,7 +1,7 @@
 // Grab the articles as a json
-$.getJSON("/api/articles", (articles) => {
+$.getJSON("/api/articles", (data) => {
     // For each one
-    articles.forEach((article) => {
+    data.forEach((article) => {
         // Display the apropos information on the page
         $("#articles").append("<p data-id='" + article._id + "'>" + article.title + "<br />" + article.link + "</p>");
         //console.log(article._id);
@@ -9,13 +9,13 @@ $.getJSON("/api/articles", (articles) => {
     });
 });
 
-$(document).on("click", "p", () => {
-    console.log("p clicked!");
+$(document).on("click", "p", function () { //setting to annonymous ES5 returns the correct "this"...
 
     // Empty the notes from the note section
     $("#notes").empty();
     // Save the id from the p tag
     const thisId = $(this).attr("data-id");
+    console.log(this);
 
     console.log(`this is the id test ${thisId}`); //Currently not undefined for id 
 
@@ -44,6 +44,33 @@ $(document).on("click", "p", () => {
                 $("#bodyinput").val(data.note.body);
             }
         });
+});
 
+// When you click the savenote button
+$(document).on("click", "#savenote", function () {
+    // Grab the id associated with the article from the submit button
+    var thisId = $(this).attr("data-id");
 
+    // Run a POST request to change the note, using what's entered in the inputs
+    $.ajax({
+            method: "POST",
+            url: "/api/articles/" + thisId,
+            data: {
+                // Value taken from title input
+                title: $("#titleinput").val(),
+                // Value taken from note textarea
+                body: $("#bodyinput").val()
+            }
+        })
+        // With that done
+        .done(function (data) {
+            // Log the response
+            console.log(data);
+            // Empty the notes section
+            $("#notes").empty();
+        });
+
+    // Also, remove the values entered in the input and textarea for note entry
+    $("#titleinput").val("");
+    $("#bodyinput").val("");
 });
