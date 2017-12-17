@@ -56,7 +56,7 @@ module.exports = (app) => {
     app.get("/api/articles", (req, res) => {
         // Grab every document in the Articles collection
         db.Article.find({})
-            .then((dbArticle) => {
+            .then((dbArticle) => { //named this dbArticle, but could have named it simply data like is typical
                 // If we were able to successfully find Articles, send them back to the client
                 res.json(dbArticle);
             })
