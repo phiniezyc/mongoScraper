@@ -2,6 +2,7 @@ body {
   display: flex;
   min-height: 100px;
   flex-direction: column;
+  background-color: lightgrey;
 }
 
 #indexPageTitle {
@@ -14,6 +15,7 @@ body {
   margin-right: auto;
   padding-top: 5%;
   color: rgb(80, 65, 65);
+  
 }
 
 #articles {
@@ -22,11 +24,13 @@ body {
   width: 65%;
   height: 700px;
   border: 2px solid black;
+  background-color: aliceblue;
 }
 
 #notes {
   float: right;
   width: 25%;
+  background-color: aliceblue;
 }
 
 textarea,
@@ -51,3 +55,5 @@ textarea {
   padding: 40px 0px 0px 0px;
   border: 2px solid blue;
 }
+
+
