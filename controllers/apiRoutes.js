@@ -4,11 +4,6 @@ const cheerio = require("cheerio");
 const db = require("../models");
 
 module.exports = (app) => {
-    app.get("/api/TEST", (req, res) => {
-
-        res.send(`API ROUTE TEST`);
-    });
-
     // Scrape data from one site and place it into the mongodb db
     app.post("/api/scrape", (req, res) => {
         // Make a request for the news section of ycombinator
