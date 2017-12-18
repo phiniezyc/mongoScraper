@@ -7,12 +7,12 @@ module.exports = (app) => {
     // Scrape data from one site and place it into the mongodb db
     app.post("/api/scrape", (req, res) => {
         // Make a request for the news section of ycombinator
-        request("https://news.ycombinator.com/", (error, response, html) => {
+        request("https://thefalcoholic.com/", (error, response, html) => {
             // Load the html body from request into cheerio
             const $ = cheerio.load(html);
             // For each element with a "title" class
 
-            $(".title").each(function (i, element) {
+            $(".c-entry-box--compact__title").each(function (i, element) {
                 // Save an empty result object
                 const result = {};
 
@@ -55,7 +55,8 @@ module.exports = (app) => {
         // Grab every document in the Articles collection
         db
             .Article
-            .find({})
+            .find()
+            .sort({_id: 1}) //This grabs and sorts the first articles put into the database.
             .then((dbArticle) => { //named this dbArticle, but could have named it simply data like is typical
                 // If we were able to successfully find Articles, send them back to the client
                 res.json(dbArticle);
