@@ -1,50 +1,53 @@
 body {
-    display: flex;
-    min-height: 100px;
-    flex-direction: column;
+  display: flex;
+  min-height: 100px;
+  flex-direction: column;
 }
 
 #indexPageTitle {
-    text-align: center;
+  text-align: center;
 }
-
-
 
 #articleSection {
-    width: 960px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 5%;
-    color: rgb(80, 65, 65);
-    
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5%;
+  color: rgb(80, 65, 65);
 }
 
-
 #articles {
-    display: inline-block;
-    overflow: auto;
-    width: 65%;
-    height: 700px;
-    border: 2px solid black;
+  display: inline-block;
+  overflow: auto;
+  width: 65%;
+  height: 700px;
+  border: 2px solid black;
 }
 
 #notes {
-    float: right;
-    width: 25%;
+  float: right;
+  width: 25%;
 }
 
 textarea,
 input {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
 
 input {
-    height: 36px;
-    font-size: 24px;
+  height: 36px;
+  font-size: 24px;
 }
 
 textarea {
-    height: 200px;
-    font-size: 18px;
+  height: 200px;
+  font-size: 18px;
+}
+
+#scrapeButton {
+  height: 200px;
+  width: 200px;
+  padding: 40px 0px 0px 0px;
+  border: 2px solid blue;
 }

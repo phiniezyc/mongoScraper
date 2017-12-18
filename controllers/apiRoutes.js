@@ -5,7 +5,7 @@ const db = require("../models");
 
 module.exports = (app) => {
     // Scrape data from one site and place it into the mongodb db
-    app.post("/api/scrape", (req, res) => {
+    app.get("/api/scrape", (req, res) => {
         // Make a request for the news section of ycombinator
         request("https://thefalcoholic.com/", (error, response, html) => {
             // Load the html body from request into cheerio
@@ -46,6 +46,7 @@ module.exports = (app) => {
                 }
             });
             res.send("Scrape Complete");
+            
             //console.log(`Here is what we grabbed ${JSON.stringify(result)}`);
         });
 
