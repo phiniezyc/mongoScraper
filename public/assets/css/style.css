@@ -15,7 +15,6 @@ body {
   margin-right: auto;
   padding-top: 5%;
   color: rgb(80, 65, 65);
-  
 }
 
 #articles {
@@ -55,5 +54,3 @@ textarea {
   padding: 40px 0px 0px 0px;
   border: 2px solid blue;
 }
-
-
