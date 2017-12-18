@@ -4,14 +4,6 @@ body {
     flex-direction: column;
 }
 
-main {
-    flex: 1 0 auto;
-}
-
-body {
-    background-color: #F2F6D0
-}
-
 #articleSection {
     width: 960px;
     margin-left: auto;
@@ -35,7 +27,6 @@ textarea,
 input {
     display: block;
     width: 100%;
-    background-color: #FCF5C7;
 }
 
 input {
