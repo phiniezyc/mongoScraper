@@ -17,14 +17,14 @@ $(document).on("click", "p", function () { //setting to annonymous ES5 returns t
     const thisId = $(this).attr("data-id");
     console.log(this);
 
-    console.log(`this is the id test ${thisId}`); //Currently not undefined for id 
+    console.log(`this is the id test ${thisId}`); //Currently not undefined for id
 
     // Now make an ajax call for the Article
     $.ajax({
-            method: "GET",
-            url: "/api/articles/" + thisId
-        })
-        // With that done, add the note information to the page
+        method: "GET",
+        url: "/api/articles/" + thisId
+    })
+    // With that done, add the note information to the page
         .done(function (data) {
             console.log(data);
             // The title of the article
@@ -32,7 +32,8 @@ $(document).on("click", "p", function () { //setting to annonymous ES5 returns t
             // An input to enter a new title
             $("#notes").append("<input id='titleinput' name='title' placeholder='Enter Note Title Here:'>");
             // A textarea to add a new note body
-            $("#notes").append("<textarea id='bodyinput' name='body' placeholder='Enter Note Text Here:'></textarea>");
+            $("#notes").append("<textarea id='bodyinput' name='body' placeholder='Enter Note Text Here:'></texta" +
+                    "rea>");
             // A button to submit a new note, with the id of the article saved to it
             $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
 
@@ -53,16 +54,16 @@ $(document).on("click", "#savenote", function () {
 
     // Run a POST request to change the note, using what's entered in the inputs
     $.ajax({
-            method: "POST",
-            url: "/api/articles/" + thisId,
-            data: {
-                // Value taken from title input
-                title: $("#titleinput").val(),
-                // Value taken from note textarea
-                body: $("#bodyinput").val()
-            }
-        })
-        // With that done
+        method: "POST",
+        url: "/api/articles/" + thisId,
+        data: {
+            // Value taken from title input
+            title: $("#titleinput").val(),
+            // Value taken from note textarea
+            body: $("#bodyinput").val()
+        }
+    })
+    // With that done
         .done(function (data) {
             // Log the response
             console.log(data);
