@@ -4,7 +4,7 @@ module.exports = (app) => {
 
         res.render("index", {
             // just using this to test how handlebars works!
-            test: `this is a test!`,
+            test: `Enjoy the articles!`,
         });
 
     });
