@@ -52,7 +52,7 @@ module.exports = (app) => {
 
     });
 
-    app.get("/api/articles", (req, res) => {
+    app.get("/", (req, res) => {
         // Grab every document in the Articles collection
         db
             .Article
@@ -60,7 +60,13 @@ module.exports = (app) => {
             .sort({_id: 1}) //This grabs and sorts the first articles put into the database.
             .then((dbArticle) => { //named this dbArticle, but could have named it simply data like is typical
                 // If we were able to successfully find Articles, send them back to the client
-                res.json(dbArticle);
+                //res.json(dbArticle);
+                // let articleTitle = dbArticle.title;
+                // let articleLink = dbArticle.link;
+                res.render("test", {
+                    dbArticle
+                });
+                
             })
             .catch((err) => {
                 // If an error occurred, send it to the client
@@ -119,3 +125,4 @@ module.exports = (app) => {
             });
     });
 };
+

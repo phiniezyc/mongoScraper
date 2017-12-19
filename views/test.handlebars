@@ -1,0 +1,58 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mongo Scraper</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+</head>
+
+<body>
+    <h1 id="indexPageTitle">ATL Sports Scraper</h1>
+
+    <nav>
+        <div class="nav-wrapper light-blue darken-2">
+            <a href="#" class="brand-logo right">ATL Sports</a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li>
+                    <a href="/">Grab Latest Articles</a>
+                </li>
+                <li>
+                    <a href="/api/articles">See Articles in API</a>
+                </li>
+                <li>
+                    <a href="collapsible.html">JavaScript</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+
+    
+
+
+    <div class="container" id="articleSection">
+        <a class="btn-floating btn-large waves-effect waves-light light-blue darken-2 pulse" id="scrapeButton"><i class="material-icons">Get Latest Content</i></a>
+        <h3 id="articleSectionHead">Articles</h3>
+
+        <div id="articles"> {{#each dbArticle}}
+       <p>
+        {{title}} 
+        <br>
+        {{link}}
+        </p>
+    {{/each}} </div>
+        
+        
+    <div id="notes"></div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="../assets/js/app.js"></script>
+</body>
