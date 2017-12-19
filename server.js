@@ -34,7 +34,7 @@ require("./controllers/htmlRoutes.js")(app);
 
 // Connect to the Mongo DB
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/mongoScraper", { useMongoClient: true });
+mongoose.connect("mongodb://heroku_r26vk6gd:3s77acp2lu1qss2lhnlm9m57ev@ds137826.mlab.com:37826/heroku_r26vk6gd", { useMongoClient: true });
 
 // Start the server
 app.listen(PORT, () => {
